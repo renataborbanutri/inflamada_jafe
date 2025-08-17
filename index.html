@@ -94,37 +94,88 @@
     .result h3 { color: #b03574; font-size: 1.5em; margin-bottom: 15px; text-align: center; }
     .result-section { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #b03574; }
 
-    /* NOVO: bloco ponte/alerta e solução */
+    /* NOVO: bloco ponte/alerta */
     .bridge { margin-top: 15px; }
     .bridge ul { margin: 12px 0 0; padding-left: 20px; }
     .bridge li { margin: 6px 0; }
 
-    .solution {
-      margin-top: 20px;
-      background: linear-gradient(135deg, rgba(255,246,250,.9), rgba(248,240,255,.9));
-      border: 1px solid rgba(242,207,225,.5); border-radius: 16px; padding: 20px;
-    }
-    .solution h4 { margin: 0 0 12px 0; color: #8b2b59; font-weight: 700; font-size: 1.2rem; }
-    .assurance {
-      margin-top: 12px; font-weight: 600; color: #6e2549; padding: 12px; background: rgba(255,255,255,.5);
-      border-radius: 12px; border-left: 4px solid #b03574;
-    }
-
-    /* CTA final (reaproveitando seu bloco) */
+    /* CTA final (estilo opcional, caso use) */
     .programa-cta {
       background: linear-gradient(135deg, #b03574, #d4579a); color: white; border-radius: 15px; padding: 30px;
-      text-align: center; margin-top: 30px; animation: pulse 2s infinite;
+      text-align: left; margin-top: 30px; animation: pulse 2s infinite;
     }
     @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.02)} 100%{transform:scale(1)} }
-    .programa-cta h3 { font-size: 1.6em; margin-bottom: 10px; }
-    .programa-cta .beneficios { text-align:left; margin: 16px 0; }
-    .programa-cta .beneficio { display:flex; align-items:center; margin-bottom: 8px; }
-    .programa-cta .beneficio::before { content:'✅'; margin-right: 10px; font-size: 1.2em; }
-    .programa-cta .button {
-      display: inline-block; background: white; color: #b03574; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700;
-      margin-top: 16px; transition: transform .2s ease, box-shadow .2s ease;
+    .programa-cta .cta-inner { max-width: 620px; margin: 0 auto; }
+    .programa-cta .cta-title { font-size: clamp(1.05rem, 4.5vw, 1.4rem); line-height: 1.35; margin: 0 0 14px 0; color: #fff; }
+    .programa-cta .cta-title strong { font-weight: 800; }
+    .programa-cta .cta-benefits { display: grid; gap: 10px; margin: 0 0 16px 0; padding: 0; list-style: none; }
+    .programa-cta .cta-benefits li {
+      display: grid; grid-template-columns: 22px 1fr; align-items: start; gap: 10px;
+      padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,0.12);
     }
-    .programa-cta .button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,.3); }
+    .programa-cta .cta-benefits .icon { line-height: 1; font-size: 1rem; transform: translateY(2px); }
+    .programa-cta .cta-button {
+      display:inline-block; width: 100%; max-width: 520px; margin: 8px 0 0 0;
+      background: #fff; color: #b03574; padding: 14px 18px; border-radius: 50px; text-decoration: none; font-weight: 700;
+    }
+
+    /* NOVO: Botão WhatsApp  */
+    .whatsapp-share { text-align: center; margin-top: 18px; }
+    .whatsapp-button {
+      display: inline-block; text-decoration: none; font-weight: 600;
+      background-color: #25D366; color: #fff; padding: 14px 18px; border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(37,211,102,.25);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .whatsapp-button:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(37,211,102,.35); }
+
+    /* --- Alerta de consequências --- */
+    .alert-card {
+      position: relative;
+      margin-top: 22px;
+      padding: 22px 20px 18px 20px;
+      border-radius: 18px;
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, #ff6b9e, #ffb86b, #ff6b9e) border-box;
+      border: 2px solid transparent;
+      box-shadow: 0 12px 28px rgba(176,53,116,.18);
+      animation: alertGlow 2.2s ease-in-out infinite;
+    }
+    @keyframes alertGlow {
+      0%,100% { box-shadow: 0 10px 26px rgba(176,53,116,.18); }
+      50% { box-shadow: 0 14px 32px rgba(212,87,154,.28); }
+    }
+    .alert-chip {
+      position: absolute;
+      top: -12px; left: 16px;
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #b03574, #d4579a);
+      color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .5px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 18px rgba(176,53,116,.25);
+    }
+    .alert-heading {
+      margin: 6px 0 10px 0;
+      color: #8b2b59;
+      font-weight: 800;
+      font-size: 1.15rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .alert-heading .icon { font-size: 1.2rem; line-height: 1; }
+    .alert-list { margin: 6px 0 0 0; padding: 0; list-style: none; }
+    .alert-list li {
+      position: relative; padding-left: 30px; margin: 10px 0; line-height: 1.45; color: #4a1b32;
+    }
+    .alert-list li::before {
+      content: "⚠️"; position: absolute; left: 0; top: 0; transform: translateY(2px);
+    }
+    .alert-note {
+      margin-top: 14px; font-size: .95rem; font-weight: 600; color: #6e2549;
+      padding: 10px 12px; background: rgba(242,207,225,.35); border-left: 4px solid #b03574; border-radius: 12px;
+    }
 
     /* Mobile */
     @media (max-width: 768px) {
@@ -132,230 +183,6 @@
       .checkbox-grid { grid-template-columns: 1fr; }
       h1 { font-size: 1.8em; }
     }
-
-
-    /* --- DESTAQUE: Alerta de Consequências --- */
-.alert-card {
-  position: relative;
-  margin-top: 22px;
-  padding: 22px 20px 18px 20px;
-  border-radius: 18px;
-  background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(135deg, #ff6b9e, #ffb86b, #ff6b9e) border-box;
-  border: 2px solid transparent;
-  box-shadow: 0 12px 28px rgba(176,53,116,.18);
-  animation: alertGlow 2.2s ease-in-out infinite;
-}
-@keyframes alertGlow {
-  0%,100% { box-shadow: 0 10px 26px rgba(176,53,116,.18); }
-  50% { box-shadow: 0 14px 32px rgba(212,87,154,.28); }
-}
-
-.alert-chip {
-  position: absolute;
-  top: -12px; left: 16px;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #b03574, #d4579a);
-  color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .5px;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(176,53,116,.25);
-}
-
-.alert-heading {
-  margin: 6px 0 10px 0;
-  color: #8b2b59;
-  font-weight: 800;
-  font-size: 1.15rem;
-  display: flex; align-items: center; gap: 8px;
-}
-.alert-heading .icon {
-  font-size: 1.2rem; line-height: 1;
-}
-
-.alert-list {
-  margin: 6px 0 0 0;
-  padding: 0; list-style: none;
-}
-.alert-list li {
-  position: relative;
-  padding-left: 30px;
-  margin: 10px 0;
-  line-height: 1.45;
-  color: #4a1b32;
-}
-.alert-list li::before {
-  content: "⚠️";
-  position: absolute; left: 0; top: 0;
-  transform: translateY(2px);
-}
-
-.alert-note {
-  margin-top: 14px;
-  font-size: .95rem;
-  font-weight: 600;
-  color: #6e2549;
-  padding: 10px 12px;
-  background: rgba(242,207,225,.35);
-  border-left: 4px solid #b03574;
-  border-radius: 12px;
-}
-
-
-/* ===== CTA MOBILE-FIRST ===== */
-.programa-cta {
-  text-align: left;
-  padding: clamp(18px, 5vw, 30px);
-  border-radius: 16px;
-}
-
-.programa-cta .cta-inner {
-  max-width: 620px;
-  margin: 0 auto;
-}
-
-.programa-cta .cta-title {
-  font-size: clamp(1.05rem, 4.5vw, 1.4rem);
-  line-height: 1.35;
-  margin: 0 0 14px 0;
-  color: #fff;
-}
-
-.programa-cta .cta-title strong {
-  font-weight: 800;
-}
-
-.programa-cta .cta-benefits {
-  display: grid;
-  gap: 10px;
-  margin: 0 0 16px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.programa-cta .cta-benefits li {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  align-items: start;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: saturate(140%);
-}
-
-.programa-cta .cta-benefits .icon {
-  line-height: 1;
-  font-size: 1rem;
-  transform: translateY(2px);
-}
-
-.programa-cta .cta-benefits strong {
-  color: #fff;
-}
-
-.programa-cta .cta-benefits span {
-  color: #fff;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  line-height: 1.45;
-}
-
-/* Botão ocupando toda a largura no mobile, com largura máxima no desktop */
-.programa-cta .cta-button {
-  width: 100%;
-  max-width: 520px;
-  margin: 8px 0 0 0;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  padding: 14px 18px;
-}
-
-/* Ajuste sutil para telas médias/maiores */
-@media (min-width: 600px) {
-  .programa-cta .cta-benefits {
-    gap: 12px;
-  }
-}
-/* ===== SOLUTION — MOBILE-FIRST ===== */
-.solution {
-  padding: clamp(16px, 4.5vw, 22px);
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,246,250,.92), rgba(248,240,255,.92));
-  border: 1px solid rgba(242,207,225,.55);
-}
-
-.sol-title {
-  display: flex; align-items: center; gap: 8px;
-  margin: 0 0 10px 0;
-  font-size: clamp(1.05rem, 4.3vw, 1.25rem);
-  color: #8b2b59; font-weight: 800;
-}
-.sol-ico { font-size: 1.1em; line-height: 1; }
-
-.sol-lead {
-  margin: 0 0 12px 0;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  color: #6e2549;
-}
-
-.sol-steps {
-  counter-reset: step;
-  display: grid; gap: 8px;
-  margin: 0 0 14px 0; padding: 0; list-style: none;
-}
-.sol-steps li {
-  position: relative;
-  padding: 10px 12px 10px 44px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(176,53,116,.18);
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  line-height: 1.45;
-}
-.sol-steps li::before {
-  counter-increment: step;
-  content: counter(step);
-  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-  width: 26px; height: 26px; border-radius: 50%;
-  display: grid; place-items: center;
-  font-weight: 800; color: #fff;
-  background: linear-gradient(135deg, #b03574, #d4579a);
-  box-shadow: 0 6px 14px rgba(176,53,116,.22);
-}
-
-.sol-sub {
-  margin: 10px 0 8px 0;
-  font-weight: 800; color: #8b2b59;
-  font-size: clamp(0.98rem, 4vw, 1.1rem);
-}
-
-/* lista dinâmica de ajustes (preenchida via JS) */
-.sol-list {
-  margin: 0 0 12px 0; padding: 0; list-style: none;
-  display: grid; gap: 8px;
-}
-.sol-list li {
-  position: relative;
-  padding-left: 30px;
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(176,53,116,.16);
-  border-radius: 10px;
-  padding: 10px 12px 10px 34px;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-  line-height: 1.45;
-}
-.sol-list li::before {
-  content: "✅";
-  position: absolute; left: 10px; top: 9px; line-height: 1;
-}
-
-/* mantém seu estilo da .assurance, mas dá um respiro no mobile */
-.solution .assurance {
-  margin-top: 12px;
-  font-size: clamp(0.95rem, 3.8vw, 1rem);
-}
-
   </style>
 </head>
 <body>
@@ -371,7 +198,6 @@
     <!-- SEÇÃO 1: DADOS PESSOAIS -->
     <div class="section active" id="section-1">
       <h1>Preciso de algumas informações básicas para personalizar sua avaliação</h1>
- <!--     <p class="subtitle">Preciso de algumas informações básicas para personalizar sua avaliação</p> -->
 
       <div class="form-group">
         <label for="idade">Qual sua idade?</label>
@@ -387,8 +213,6 @@
         <label for="altura">Qual sua altura? (cm)</label>
         <input type="number" id="altura" placeholder="Ex: 165">
       </div>
-
-
 
       <button onclick="nextSection(1)">Continuar</button>
     </div>
@@ -475,14 +299,15 @@
     <div class="section" id="section-5">
       <div class="result" id="resultado"></div>
 
-      <!-- Vamos reaproveitar este bloco, mas o conteúdo será atualizado via JS para a copy do JAFE -->
-      <div class="programa-cta" id="programa-cta"></div>
-
-      <!-- Antigos blocos de promo/whatsapp foram deixados de lado -->
+      <!-- NOVO: botão do WhatsApp -->
+      <div class="whatsapp-share" id="whatsapp-share"></div>
     </div>
   </div>
 
   <script>
+    // >>> Ajuste aqui o número do WhatsApp (somente dígitos, com DDI), ex: '16153304647'
+    const WHATSAPP_PHONE = '16153304647';
+
     let currentSection = 1;
     const totalSections = 5;
     let userData = {};
@@ -566,35 +391,27 @@
       }
     }
 
-    /* ====== NOVO: ponte/alerta e plano de ação ====== */
+    /* ====== NOVO: ponte/alerta ====== */
     function mensagemPonte(nivel) {
-  // Mostra o alerta só quando o nível é "Alta".
-  // Se quiser que apareça também em "Moderada", troque a condição para:
-  // if (!nivel.includes("Alta") && !nivel.includes("Moderada")) return "";
-  //  if (!nivel.includes("Alta")) return "";
-
-    return `
-    <div class="alert-card" role="alert" aria-live="polite">
-      <span class="alert-chip">Alerta</span>
-      <h2 class="alert-heading"><span class="icon">🚩</span>Consequências de adiar o cuidado</h2>
-      <ul class="alert-list">
-        <li>Maior resistência à insulina e acúmulo de gordura visceral.</li>
-        <li>Hormônios descontrolados na pré-menopausa, menopausa ou pós menopausa.</li>
-        <li>Fadiga constante e névoa mental que afetam o foco.</li>
-        <li>Sono leve/irregular, com despertares noturnos.</li>
-        <li>Pele mais reativa e intestino instável.</li>
-        <li>Risco crescente de síndrome metabólica.</li>
-        <li>Dores articulares mais frequentes e recuperação lenta.</li>
-      </ul>
-      <div class="alert-note">Quanto antes você agir, mais rápido seu corpo responde.</div>
-    </div>
-  `;
-}
-
-
-    function bridgeLabel(nivel) {
-      return nivel.includes("Alta") ? "" : "";
+      return `
+        <div class="alert-card" role="alert" aria-live="polite">
+          <span class="alert-chip">Alerta</span>
+          <h2 class="alert-heading"><span class="icon">🚩</span>Consequências de adiar o cuidado</h2>
+          <ul class="alert-list">
+            <li>Maior resistência à insulina e acúmulo de gordura visceral.</li>
+            <li>Hormônios descontrolados na pré-menopausa, menopausa ou pós menopausa.</li>
+            <li>Fadiga constante e névoa mental que afetam o foco.</li>
+            <li>Sono leve/irregular, com despertares noturnos.</li>
+            <li>Pele mais reativa e intestino instável.</li>
+            <li>Risco crescente de síndrome metabólica.</li>
+            <li>Dores articulares mais frequentes e recuperação lenta.</li>
+          </ul>
+          <div class="alert-note">Quanto antes você agir, mais rápido seu corpo responde.</div>
+        </div>
+      `;
     }
+
+    function bridgeLabel(nivel) { return ""; }
 
     function planoAcao(sistemasSet) {
       const itens = [];
@@ -605,7 +422,7 @@
       if (sistemasSet.has("Fígado")) itens.push("Suporte hepático via alimentação: menos ultraprocessados, ajustes de gordura e intervalos corretos.");
       if (sistemasSet.has("Articulações") || sistemasSet.has("Muscular/Imune")) itens.push("Anti-inflamatório com jejum e alimentação correta.");
       if (sistemasSet.has("Cérebro") || sistemasSet.has("Neurológico")) itens.push("Clareza mental e energia: janelas estáveis, hidratação e refeições corretas para te dar energia e clareza mental.");
-      if (sistemasSet.has("Urinário") || sistemasSet.has("Rins")) itens.push("Jejum é o melhor Anti-inflamatório que existe.");
+      if (sistemasSet.has("Urinário") || sistemasSet.has("Rins")) itens.push("Jejum é o melhor anti-inflamatório que existe.");
       if (sistemasSet.has("Absorção de vitaminas")) itens.push("Mudanças alimentares para otimizar a absorção de vitaminas e minerais vindos dos alimentos.");
       if (sistemasSet.has("Pele")) itens.push("Pele mais calma: cuidados para equilibrar seu corpo e desinflamar de dentro para fora.");
       return itens.map(t => `<li>${t}</li>`).join("");
@@ -628,12 +445,12 @@
         const unicosSistemas = [...new Set(userData.sintomas)].join(', ');
         const listaSintomas = userData.sintomasTexto.join(', ');
 
-        // Recomendação por IMC (mantida)
-        let recomendacao = '';
-        if (userData.imc < 18.5) recomendacao = 'O JAFE pode ajudar a alcançar um peso saudável com uma alimentação balanceada.';
-        else if (userData.imc < 25) recomendacao = 'O JAFE pode otimizar sua saúde e energia com um plano anti-inflamatório.';
-        else if (userData.imc < 30) recomendacao = 'O JAFE pode ajudar a reduzir medidas e melhorar sua saúde geral.';
-        else recomendacao = 'O JAFE oferece um plano personalizado para perda de peso e redução de inflamação.';
+        // Recomendação por IMC (se quiser usar no futuro)
+        // let recomendacao = '';
+        // if (userData.imc < 18.5) recomendacao = 'O JAFE pode ajudar a alcançar um peso saudável com uma alimentação balanceada.';
+        // else if (userData.imc < 25) recomendacao = 'O JAFE pode otimizar sua saúde e energia com um plano anti-inflamatório.';
+        // else if (userData.imc < 30) recomendacao = 'O JAFE pode ajudar a reduzir medidas e melhorar sua saúde geral.';
+        // else recomendacao = 'O JAFE oferece um plano personalizado para perda de peso e redução de inflamação.';
 
         const ponte = mensagemPonte(nivel);
 
@@ -645,7 +462,6 @@
             <p><strong>Idade:</strong> ${userData.idade} anos</p>
             <p><strong>Peso:</strong> ${userData.peso} kg</p>
             <p><strong>Altura:</strong> ${userData.altura} cm</p>
-
           </div>
 
           <div class="result-section">
@@ -674,72 +490,43 @@
             <p>${listaSintomas}</p>
           </div>
 
-          <div class="result-section">
-            <h4>Recomendação</h4>
-            <p>${recomendacao}</p>
-          </div>
-
           <div class="bridge">
             ${bridgeLabel(nivel) ? `<strong>${bridgeLabel(nivel)}</strong>` : ""}
             ${ponte}
           </div>
-
-         <div class="solution">
-          <h4 class="sol-title"><span class="sol-ico" aria-hidden="true">🧭</span>Plano de ação personalizado</h4>
-
-          <p class="sol-lead">Vamos agir em <strong>3 frentes</strong> para desinflamar e estabilizar hormônios:</p>
-
-          <ol class="sol-steps" role="list">
-            <li><strong>Jejum estruturado</strong> </li>
-            <li><strong>Reset intestinal</strong></li>
-            <li><strong>Prato inteligente</strong> — <em>quantidade certa</em> com a <strong>TATA</strong> (proteína âncora, combinações de macros e janela alimentar).</li>
-          </ol>
-
-          <h5 class="sol-sub">Ajustes finos para o seu caso</h5>
-          <ul id="plano-ul" class="sol-list"></ul>
-
-          <p class="assurance">Dentro do JAFE eu te guio na prática — do jejum certo ao prato certo, com segurança, constância e ajustes semanais até seu corpo responder.</p>
-        </div>
-
         `;
         const resultadoEl = document.getElementById('resultado');
         resultadoEl.innerHTML = htmlResultado;
 
-        // Preencher plano de ação conforme sistemas marcados
+        // Preencher plano de ação se existir uma UL com id="plano-ul" (opcional)
         const ul = document.getElementById('plano-ul');
         if (ul) ul.innerHTML = planoAcao(new Set(userData.sintomas));
 
-        // Atualiza CTA final com a mesma copy do teste anterior
-        const ctaEl = document.getElementById('programa-cta');
-        ctaEl.innerHTML = `
-  <div class="cta-inner">
-    <h3 class="cta-title">
-      Vou te conduzir com <strong>jejum + refeições corretas</strong> para desinflamar e
-      recuperar o <strong>controle hormonal</strong>.
-    </h3>
+        // >>> Botão do WhatsApp com Objetivos e Hábitos incluídos
+        const objetivosLista = (userData.objetivo && userData.objetivo.length)
+          ? userData.objetivo.join(', ')
+          : '—';
 
-    <ul class="cta-benefits" role="list">
-      <li>
-        <span class="icon" aria-hidden="true">✅</span>
-        <span><strong>Jejum = anti-inflamatório natural</strong> — aplicado com segurança e estratégia.</span>
-      </li>
-      <li>
-        <span class="icon" aria-hidden="true">✅</span>
-        <span><strong>Quantidade certa para você</strong>: com a TATA, minha calculadora inteligente, você sabe exatamente quanto comer.</span>
-      </li>
-    </ul>
+        const habitosLista = (userData.habito && userData.habito.length)
+          ? userData.habito.join(', ')
+          : '—';
 
-    <a
-      href="https://renataborbanutri.github.io/jejum/?utm_source=avaliacao2sem&utm_medium=cta_main&utm_campaign=jafe"
-      target="_blank"
-      class="button cta-button"
-      aria-label="Quero meu plano para desinflamar com o JAFE"
-    >
-      👉 Quero desinflamar agora
-    </a>
-  </div>
-`;
+        const textoWhatsapp =
+          `Fiz a autoavaliação da inflamação e o resultado foi: ${nivel}.\n` +
+          `Órgãos/sistemas afetados: ${unicosSistemas || '—'}.\n` +
+          `Sintomas que marquei: ${listaSintomas || '—'}.\n` +
+          `Objetivos: ${objetivosLista}.\n` +
+          `Hábitos: ${habitosLista}.\n\n` +
+          `Quero ajuda para equilibrar meu corpo com alimentação!`;
 
+        const linkWhatsapp = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(textoWhatsapp)}`;
+
+        const wpp = document.getElementById('whatsapp-share');
+        wpp.innerHTML = `
+          <a class="whatsapp-button" href="${linkWhatsapp}" target="_blank" rel="noopener" aria-label="Enviar resultado pelo WhatsApp">
+            💬 Enviar meu resultado pelo WhatsApp
+          </a>
+        `;
 
         window.scrollTo(0, 0);
       }
